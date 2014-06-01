@@ -4,10 +4,21 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :status
 
     validates :first_name, :last_name, :profile_name, presence: true
 
+ 
+    validates :profile_name, presence: true,
+    						 uniqueness: true,
+    						 format:{
+    						 	with: /[a-zA-Z0-9_-]/,
+    						 	message: 'Must be formatted correctly.'
+    						 }
+
+
+
+    has_many :status
+    
     def full_name
     	first_name + " " + last_name
     end

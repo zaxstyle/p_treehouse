@@ -12,16 +12,16 @@
 		<div class="container">
 			<a class="navbar-brand" href="#"> MalaysianAri </a>
 			<ul class="nav navbar-nav">
-				<li><%= link_to "All Statuses", statuses_path %></li>
+				<li><%= link_to "All Statuses", feed_path %></li>
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<% if user_signed_in? %>
 					<li><%= link_to current_user.full_name %></li>
-					<li><%= link_to "Account settings", edit_user_registration_path %></li> 
-					<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li> 
+					<li><%= link_to "Account settings", edit_account_path %></li> 
+					<li><%= link_to "Log Out", logout_path %></li> 
 				 <% else %>
-					<li><%= link_to "sign in", new_user_session_path %></li>
-					<li><%= link_to "sign up", new_user_registration_path %></li>
+					<li><%= link_to "sign in", login_path %></li>
+					<li><%= link_to "sign up", register_path%></li>
 		        <% end%>
 				    
 			</ul>
@@ -31,8 +31,10 @@
 
 
 	<div class="container">
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+
+       <%= render 'layouts/flash_messages' %>
+
+
 		<%= yield %>
 	</div>
 </body>

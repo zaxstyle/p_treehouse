@@ -15,5 +15,9 @@
  */
 
 body {
-	padding-top: 25px;
+	padding-top: 45px;
+}
+
+.alert {
+	margin-top: 10px;
 }
